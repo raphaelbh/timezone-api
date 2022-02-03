@@ -8,6 +8,10 @@ api_blueprint = Blueprint("api_blueprint", __name__)
 def timezones():
     return __response(200, timezone.timezones())
 
+@api_blueprint.route('/now')
+def now():
+    return __response(200, timezone.now())
+
 def __headers():
     return {"Content-Type": "application/json"}
 
