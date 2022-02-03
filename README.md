@@ -4,13 +4,15 @@
 
 Timezone API is a simple web service that returns the current date and time considering a given time zone.
 
-**Swagger**: /swagger (???)
-
 **Technologies used**
 - python (flask, datetime, pytz)
 - docker
 - docker compose
+
+TODO:
 - open api
+- github actions
+- heroku
 
 ## Requirements
 - docker: https://www.docker.com/
@@ -22,10 +24,8 @@ Timezone API is a simple web service that returns the current date and time cons
 
 ## Setup (Remote)
 
-`$ docker run ... ???`
+`$ docker run -p 5000:5000 -d raphaelbh/timezone-api:latest`
 
 ## Testing
 
-`$ curl http://localhost:5000/api/v1/timezones`
-
-`$ curl http://localhost:5000/api/v1/now`
+`http://localhost:5000/api/v1/swagger`
