@@ -2,13 +2,13 @@
 
 SCRIPT_PATH=`readlink -f "$0"`
 SCRIPT_DIR=`dirname "$SCRIPT_PATH"`
-BASE_DIR="$SCRIPT_DIR/../."
+BASE_DIR="$SCRIPT_DIR/.."
 
 # docker image that will be pushed
 docker_image="raphaelbh/timezone-api"
 
 # getting last image tag 
-last_image_tag=`cat ../app/version.txt`
+last_image_tag=`cat $BASE_DIR/app/version.txt`
 
 # getting new image tag
 IFS='.'
@@ -29,6 +29,6 @@ docker push "$docker_image:latest"
 echo "docker image pushed: $docker_image:latest"
 
 # update version file
-cat > ../app/version.txt << ENDOFFILE
+cat > "$BASE_DIR/app/version.txt" << ENDOFFILE
 $tag
 ENDOFFILE
