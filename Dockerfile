@@ -1,6 +1,20 @@
-FROM python:3.9-alpine
+# pyhon light image
+FROM python:3.9.10-alpine
+
+# copy the code
 COPY ./app /app
 WORKDIR /app
+
+# install dependencies
 RUN pip install -r requirements.txt
-ENTRYPOINT [ "python" ]
-CMD ["main.py" ]
+
+# Expose is NOT supported by Heroku
+# EXPOSE 5000 		
+
+# run the image as a non-root user
+RUN adduser -D appuser
+USER appuser
+
+# run the app (CMD is required to run on Heroku)
+# $PORT is set by Heroku			
+CMD gunicorn --bind 0.0.0.0:$PORT wsgi

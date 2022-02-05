@@ -4,6 +4,8 @@
 
 Timezone API is a simple web service that returns the current date and time considering a given time zone.
 
+**Demo**: https://timezone-api-01.herokuapp.com/api/v1/docs
+
 **Technologies used**
 - python (flask, datetime, pytz)
 - docker
@@ -28,4 +30,4 @@ TODO:
 
 ## Testing
 
-`http://localhost:5000/api/v1/swagger`
+`http://localhost:5000/api/v1/docs`

@@ -3,7 +3,9 @@ services:
   app:
     build: .
     container_name: app
+    environment:
+      - PORT=5000
     ports:
-      - "5000:5000"
+      - 5000:5000
     volumes:
       - ./app:/app
