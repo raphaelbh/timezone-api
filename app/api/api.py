@@ -1,14 +1,14 @@
+import api.timezone as timezone
 from datetime import datetime;
-import timezone.timezone as timezone
 from flask import Blueprint, make_response
 
-api_blueprint = Blueprint("api_blueprint", __name__)
+api = Blueprint("api", __name__)
 
-@api_blueprint.route('/timezones')
+@api.route('/timezones')
 def timezones():
     return __response(200, timezone.timezones())
 
-@api_blueprint.route('/now')
+@api.route('/now')
 def now():
     return __response(200, timezone.now())
 
