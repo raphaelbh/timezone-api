@@ -1,0 +1,91 @@
+openapi: "3.0.3"
+info:
+  title: Timezone API
+  version: 0.0.5
+  description: >-
+    Timezone API is a simple web service that provides useful time zone services.
+  contact:
+    email: raphaeldias.ti@gmail.com
+servers:
+  - url: http://localhost:5000/api/v1
+    description: Local
+  - url: https://timezone-api-01.herokuapp.com/api/v1
+    description: Development
+paths:
+  /timezones:
+    get:
+      summary: list of all timezones
+      responses:
+        200:
+          $ref: "#/components/responses/TimezoneListResponse"
+  /now:
+    get:
+      summary: current date and time in the given timezone
+      parameters:
+        - name: timezone
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: format
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          $ref: "#/components/responses/DateTimeResponse"
+components:
+  responses:
+    TimezoneListResponse:
+      description: list of available timezones in JSON format
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/TimezoneListSchema"
+    DateTimeResponse:
+      description: current date and time in the given timezone
+      content:
+         application/json:
+          schema:
+            $ref: "#/components/schemas/DateTimeSchema"
+  schemas:
+    DefaultResponseSchema:
+      type: object
+      description: default response schema
+      properties:
+        timestamp:
+          type: integer
+          description: timestamp of the moment the request was made
+        status_code:
+          type: integer
+          description: status code returned by the request
+        data:
+          type: object
+          description: response body content
+      required:
+        - timestamp
+        - status_code
+        - data
+    TimezoneListSchema:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponseSchema'
+        - type: object
+          properties:
+            data:
+              type: array
+              description: list of available timezones
+              items:
+                type: string
+          required:
+            - data
+    DateTimeSchema:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponseSchema'
+        - type: object
+          properties:
+            data:
+              type: object
+              description: current date and time in the given timezone
+          required:
+            - data
