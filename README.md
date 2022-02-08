@@ -8,7 +8,7 @@ This project was created with the purpose of deepening knowledge in python, open
 
 ## Demo
 
-https://timezone-api-01.herokuapp.com/api/v1/docs
+https://timezone-api-01.herokuapp.com/api/v1/swagger
 
 ## Requirements
 
@@ -26,8 +26,8 @@ $ docker run -p 5000:5000 -d raphaelbh/timezone-api
 ## Usage
 
 ```bash
-$ curl http://127.0.0.1:5000/api/v1/now
-$ curl http://127.0.0.1:5000/api/v1/timezones 
+$ curl http://localhost:5000/api/v1/now
+$ curl http://localhost:5000/api/v1/timezones
 ```
 
 ## Tech Stack
