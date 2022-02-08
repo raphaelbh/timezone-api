@@ -9,17 +9,15 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  HEROKU_APP_NAME: ${{ 'timezone-api-01' }}
-  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-  DOCKER_HUB_APP: ${{ 'timezone-api' }}
-  DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-  DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
 jobs:
   build_deploy:
 
     runs-on: ubuntu-latest
+
+    env:
+      DOCKER_HUB_APP: ${{ 'timezone-api' }}
+      DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+      DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
     steps:
     - name: checkout project
@@ -53,8 +51,8 @@ jobs:
     - name: docker hub login
       uses: docker/login-action@v1
       with:
-        username: ${{ secrets.DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        username: $DOCKER_HUB_USERNAME
+        password: $DOCKER_HUB_ACCESS_TOKEN
 
     - name: set up docker buildx
       uses: docker/setup-buildx-action@v1
@@ -76,6 +74,9 @@ jobs:
         tags: $DOCKER_HUB_USERNAME/$DOCKER_HUB_APP:`cat app/tag.txt`
 
     - name: deploy to heroku
+      env:
+          HEROKU_APP_NAME: ${{ 'timezone-api-01' }}
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
         docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
         heroku container:push web -a $HEROKU_APP_NAME
