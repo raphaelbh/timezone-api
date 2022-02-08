@@ -1,5 +1,0 @@
-GET http://localhost:5000/api/v1/now
-
-###
-
-GET http://localhost:5000/api/v1/timezones
