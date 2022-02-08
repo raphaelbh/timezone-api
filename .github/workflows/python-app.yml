@@ -60,14 +60,6 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/timezone-api:latest
 
-    - name: docker hub build and push (version)
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        file: ./Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/timezone-api:`cat app/tag.txt`
-
     - name: deploy to heroku
       env:
           HEROKU_APP_NAME: ${{ 'timezone-api-01' }}
