@@ -14,11 +14,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    env:
-      DOCKER_HUB_APP: ${{ 'timezone-api' }}
-      DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-      DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
     steps:
     - name: checkout project
       uses: actions/checkout@v2
@@ -51,8 +46,8 @@ jobs:
     - name: docker hub login
       uses: docker/login-action@v1
       with:
-        username: $DOCKER_HUB_USERNAME
-        password: $DOCKER_HUB_ACCESS_TOKEN
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
     - name: set up docker buildx
       uses: docker/setup-buildx-action@v1
@@ -63,7 +58,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: $DOCKER_HUB_USERNAME/$DOCKER_HUB_APP:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/timezone-api:latest
 
     - name: docker hub build and push (version)
       uses: docker/build-push-action@v2
@@ -71,7 +66,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: $DOCKER_HUB_USERNAME/$DOCKER_HUB_APP:`cat app/tag.txt`
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/timezone-api:`cat app/tag.txt`
 
     - name: deploy to heroku
       env:
