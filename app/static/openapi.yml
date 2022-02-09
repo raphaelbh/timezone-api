@@ -27,11 +27,6 @@ paths:
           required: false
           schema:
             type: string
-        - name: format
-          in: query
-          required: false
-          schema:
-            type: string
       responses:
         200:
           $ref: "#/components/responses/DateTimeResponse"
