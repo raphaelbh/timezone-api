@@ -30,6 +30,13 @@ $ curl http://localhost:5000/api/v1/now
 $ curl http://localhost:5000/api/v1/timezones
 ```
 
+## Running Tests
+
+```bash
+$ export PYTHONPATH=app
+$ pytest --cov-fail-under=90 --cov=app tests/
+```
+
 ## Tech Stack
 
 - [python](https://www.python.org/)
