@@ -12,6 +12,11 @@ class ApiTest(unittest.TestCase):
         client = app.test_client(self)
         response = client.get('/api/v1/now')
         assert response.status_code == 200, "Should return status code 200"
+
+    def test_now_request_with_valid_timezone(self):
+        client = app.test_client(self)
+        response = client.get('/api/v1/now?timezone=America/Sao_Paulo')
+        assert response.status_code == 200, "Should return status code 200"
     
     def test_now_request_with_invalid_timezone(self):
         client = app.test_client(self)
