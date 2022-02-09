@@ -13,7 +13,7 @@ class TimezoneTest(unittest.TestCase):
         expected = { 'UTC': '2021-11-04 13:05:23 UTC+0000' }
         assert all([a == b for a, b in zip(actual, expected)])
 
-    def test_convert_datetime_correct_timezone_informed(self):
+    def test_convert_datetime_valid_timezone_informed(self):
         current_datetime = datetime.datetime(2011, 11, 4, 13, 5, 23, 283000, tzinfo=datetime.timezone.utc)
         actual = timezone_service.convert_datetime(current_datetime, 'America/Sao_Paulo') 
         expected = { 'UTC':'2021-11-04 13:05:23 UTC+0000', 'America/Sao_Paulo':'2021-11-04 10:05:23 -03-0300' }
