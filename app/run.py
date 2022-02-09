@@ -1,11 +1,12 @@
 from flask import Flask
 from flask_cors import CORS
-from api import api_blueprint
-from swagger import swagger_blueprint
+
+from api import api
+from swagger import swagger
 
 app = Flask(__name__)
-app.register_blueprint(api_blueprint, url_prefix='/api/v1')
-app.register_blueprint(swagger_blueprint)
+app.register_blueprint(api.blueprint, url_prefix='/api/v1')
+app.register_blueprint(swagger.blueprint)
 
 cors = CORS(app)
 
