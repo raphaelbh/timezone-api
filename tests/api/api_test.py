@@ -1,7 +1,7 @@
 import unittest
 from app.run import app
 
-class ApiViewsTest(unittest.TestCase):
+class ApiTest(unittest.TestCase):
 
     def test_timezones_request(self):
         client = app.test_client(self)
