@@ -20,7 +20,7 @@ https://timezone-api-01.herokuapp.com/api/v1/swagger
 ```bash
 $ docker-compose up -d
 or
-$ docker run -p 5000:5000 -d raphaelbh/timezone-api
+$ docker run -p 5000:5000 -e PORT=5000 -d raphaelbh/timezone-api
 ```
     
 ## Usage
