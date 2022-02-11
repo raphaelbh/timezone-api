@@ -51,11 +51,6 @@ $ pytest --cov-fail-under=90 --cov=app tests/
 
 - https://devcenter.heroku.com/articles/container-registry-and-runtime
 
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
 ## Feedback
 
 If you have any feedback, please contact me at raphaeldias.ti@gmail.com
