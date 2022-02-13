@@ -41,7 +41,7 @@ jobs:
         export PYTHONPATH=app
         pip install pytest
         pip install pytest-cov
-        pytest --cov-fail-under=90 --cov=app tests/
+        pytest --cache-clear --cov-fail-under=90 --cov=app tests/
 
     - name: docker hub login
       uses: docker/login-action@v1
