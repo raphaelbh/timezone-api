@@ -10,7 +10,7 @@ servers:
   - url: http://localhost:5000/api/v1
     description: Local
   - url: https://timezone-api-01.herokuapp.com/api/v1
-    description: Development
+    description: Heroku
 paths:
   /timezones:
     get:
