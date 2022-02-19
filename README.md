@@ -1,7 +1,6 @@
 # Timezone API
 
 [![Project Status](https://img.shields.io/static/v1?label=project%20status&message=complete&color=success&style=flat-square)](#)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/raphaelbh/python-web-template/python-application?style=flat-square)](#)
 [![GitHub License](https://img.shields.io/github/license/raphaelbh/python-web-template?style=flat-square)](#)
 
 Timezone API is a simple web service that provides useful time zone services to external third parties.
