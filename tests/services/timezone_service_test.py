@@ -1,6 +1,6 @@
 import unittest
 import datetime
-from app.services import timezone_service
+from application.services import timezone_service
 
 class TimezoneTest(unittest.TestCase):
 

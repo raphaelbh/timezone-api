@@ -36,8 +36,8 @@ $ curl http://localhost:5000/api/v1/timezones
 ## Running Tests
 
 ```bash
-$ export PYTHONPATH=app
-$ pytest --cache-clear --cov=app tests/
+$ export PYTHONPATH=application
+$ pytest --cache-clear --cov=application tests/
 ```
 
 ## Tech Stack

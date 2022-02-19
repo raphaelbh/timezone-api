@@ -1,5 +1,5 @@
 import unittest
-from app.run import app
+from application.run import app
 
 class ApiTest(unittest.TestCase):
 

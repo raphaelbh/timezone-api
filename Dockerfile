@@ -2,8 +2,8 @@
 FROM python:3.9.10-alpine
 
 # copy the code
-COPY ./app /app
-WORKDIR /app
+COPY ./application /application
+WORKDIR /application
 
 # install dependencies
 RUN pip install -r requirements.txt
