@@ -7,8 +7,6 @@ Timezone API is a simple web service that provides useful time zone services to 
 
 This project was created with the purpose of deepening knowledge in python, openapi specification, github actions and heroku integration.
 
-**Project status:** in development
-
 ## Demo
 
 https://timezone-api-01.herokuapp.com/api/v1/swagger
